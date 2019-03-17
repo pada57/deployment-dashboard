@@ -18,8 +18,8 @@ import { mainListItems } from './listItems/mainListItems';
 // import SimpleLineChart from './SimpleLineChart';
 // import SimpleTable from './SimpleTable';
 
-import logo from "../../assets/img/pictet.svg";
-import "../../assets/css/App.css";
+import logo from "../assets/img/pictet.svg";
+import "../assets/css/App.css";
 
 const drawerWidth = 240;
 
