@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Switch, Route, Redirect } from "react-router-dom";
 import classNames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -20,6 +21,24 @@ import { mainListItems } from './listItems/mainListItems';
 
 import logo from "../assets/img/pictet.svg";
 import "../assets/css/App.css";
+
+import routes from "routes.js";
+
+const switchRoutes = (
+  <Switch>
+    {routes.map((prop, key) => {
+      if (prop.layout === "/admin") {
+        return (
+          <Route
+            path={prop.layout + prop.path}
+            component={prop.component}
+            key={key}
+          />
+        );
+      }
+    })}
+  </Switch>
+);
 
 const drawerWidth = 240;
 
