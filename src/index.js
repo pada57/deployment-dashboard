@@ -15,7 +15,7 @@ const hist = createBrowserHistory();
 ReactDOM.render(
     <Router history={hist}>
       <Switch>
-        <Route path="/dashboard" component={App} logoText="Pictet Technologies" />
+        <Route path="/dashboard" component={() => <App logoText="Pictet Technologies" />}  />
         <Redirect from="/" to="/dashboard" />
       </Switch>
     </Router>,
