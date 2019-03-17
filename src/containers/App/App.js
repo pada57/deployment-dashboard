@@ -18,6 +18,9 @@ import { mainListItems } from './listItems/mainListItems';
 // import SimpleLineChart from './SimpleLineChart';
 // import SimpleTable from './SimpleTable';
 
+import logo from "../../assets/img/pictet.svg";
+import "../../assets/css/App.css";
+
 const drawerWidth = 240;
 
 const styles = theme => ({
@@ -34,12 +37,13 @@ const styles = theme => ({
     padding: '0 8px',
     ...theme.mixins.toolbar,
   },
-  appBar: {
+  appBar: {    
     zIndex: theme.zIndex.drawer + 1,
     transition: theme.transitions.create(['width', 'margin'], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
     }),
+    backgroundColor: '#595757'
   },
   appBarShift: {
     marginLeft: drawerWidth,
@@ -95,6 +99,53 @@ const styles = theme => ({
   h5: {
     marginBottom: theme.spacing.unit * 2,
   },
+
+  //TODO move to another file
+  logo: {
+    position: "relative",
+    padding: "15px 15px",
+    zIndex: "4",
+    // "&:after": {
+    //   content: '""',
+    //   position: "absolute",
+    //   bottom: "0",
+
+    //   height: "1px",
+    //   right: "15px",
+    //   width: "calc(100% - 30px)",
+    //   //backgroundColor: "rgba(" + hexToRgb(grayColor[6]) + ", 0.3)"
+    // }
+  },
+  logoLink: {
+    //...defaultFont,
+    textTransform: "uppercase",
+    padding: "5px 0",
+    display: "block",
+    fontSize: "14px",
+    textAlign: "left",
+    fontWeight: "350",
+    lineHeight: "30px",
+    textDecoration: "none",
+    //backgroundColor: "transparent",
+    // "&,&:hover": {
+    //   color: whiteColor
+    // }
+  },
+  logoImage: {
+    
+    width: "30px",
+    display: "inline-block",
+    maxHeight: "30px",
+    marginLeft: "10px",
+    marginRight: "15px"
+  },
+  img: {
+    width: "35px",
+    top: "22px",
+    position: "absolute",
+    verticalAlign: "middle",
+    border: "0"
+  },
 });
 
 class MainLayout extends React.Component {
@@ -111,8 +162,26 @@ class MainLayout extends React.Component {
   };
 
   render() {
-    const { classes } = this.props;
+    const { classes, logoText } = this.props;
 
+
+    // TODO Move sidebar in another component
+    const brand = (
+       <div className={classes.logo}>
+         <a
+           href="https://www.group.pictet/"
+           className={classNames(classes.logoLink)}
+         >
+          <div 
+            className={classes.logoImage}
+            >
+            <img src={logo} alt="logo" className={classes.img} /> 
+            
+          </div>
+           {logoText}
+         </a>
+       </div>
+    );
     return (
       <div className={classes.root}>
         <CssBaseline />
@@ -155,6 +224,7 @@ class MainLayout extends React.Component {
           }}
           open={this.state.open}
         >
+          {brand}
           <div className={classes.toolbarIcon}>
             <IconButton onClick={this.handleDrawerClose}>
               <ChevronLeftIcon />
