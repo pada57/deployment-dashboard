@@ -1,10 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+
 // TODO use webpack
 // import App from './containers';
 import  App  from './containers/App/App';
-import * as serviceWorker from './serviceWorker';
+import * as serviceWorker from './utils/serviceWorker';
+
+import './assets/css/index.css';
 
 ReactDOM.render(<App logoText="Pictet Technologies" />, document.getElementById('root'));
 
