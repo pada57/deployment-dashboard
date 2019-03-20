@@ -27,7 +27,8 @@ import routes from "routes.js";
 const switchRoutes = (
   <Switch>
     {routes.map((prop, key) => {
-      if (prop.layout === "/admin") {
+      
+      if (prop.layout === "/App") { 
         return (
           <Route
             path={prop.layout + prop.path}
@@ -41,6 +42,16 @@ const switchRoutes = (
 );
 
 const drawerWidth = 240;
+const transition = {
+  transition: "all 0.33s cubic-bezier(0.685, 0.0473, 0.346, 1)"
+};
+
+const container = {
+  paddingRight: "15px",
+  paddingLeft: "15px",
+  marginRight: "auto",
+  marginLeft: "auto"
+};
 
 const styles = theme => ({
   root: {
@@ -118,6 +129,30 @@ const styles = theme => ({
   h5: {
     marginBottom: theme.spacing.unit * 2,
   },
+  //Move to dashboard
+  wrapper: {
+    position: "relative",
+    top: "0",
+    height: "100vh"
+  },
+  mainPanel: {
+    [theme.breakpoints.up("md")]: {
+      width: `calc(100% - ${drawerWidth}px)`
+    },
+    overflow: "auto",
+    position: "relative",
+    float: "right",
+    ...transition,
+    maxHeight: "100%",
+    width: "100%",
+    overflowScrolling: "touch"
+  },
+  content: {
+    marginTop: "70px",
+    padding: "30px 15px",
+    minHeight: "calc(100vh - 123px)"
+  },
+  container,
 
   //TODO move to another file
   logo: {
@@ -180,6 +215,10 @@ class MainLayout extends React.Component {
     this.setState({ open: false });
   };
 
+  getRoute() {
+    return this.props.location.pathname !== "/admin/maps";
+  }
+
   render() {
     const { classes, logoText } = this.props;
 
@@ -207,6 +246,7 @@ class MainLayout extends React.Component {
         <AppBar
           position="absolute"
           className={classNames(classes.appBar, this.state.open && classes.appBarShift)}
+          routes={routes}
         >
           <Toolbar disableGutters={!this.state.open} className={classes.toolbar}>
             <IconButton
@@ -252,6 +292,11 @@ class MainLayout extends React.Component {
           <Divider />
           <List>{mainListItems}</List>          
         </Drawer>
+        
+        <div className={classes.content}>
+          <div className={classes.container}>{switchRoutes}</div>
+        </div>
+          
         <main className={classes.content}>
           <div className={classes.appBarSpacer} />
           {/* <Typography variant="h4" gutterBottom component="h2">

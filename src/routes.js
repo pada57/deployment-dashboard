@@ -4,7 +4,7 @@ import LayersIcon from '@material-ui/icons/Layers';
 import DashboardPage from "views/Dashboard/Dashboard.jsx";
 import ImportPage from "views/Import/Import.jsx";
 
-const dashboardRoutes = [
+const appRoutes = [
     {
       path: "/dashboard",
       name: "Dashboard",
@@ -21,4 +21,4 @@ const dashboardRoutes = [
     }
 ];
 
-export default dashboardRoutes;
+export default appRoutes;
