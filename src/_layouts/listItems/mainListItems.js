@@ -11,9 +11,10 @@ import { NavLink, Link } from "react-router-dom";
 //TODO do loop here with routes instead of manual creation
 export const mainListItems = (
   <div>
-    <NavLink
+    <Link
             to="/App/dashboard"
             activeClassName="active"
+            className="App-link"
             key="Dashboard"
           >
       <ListItem button>
@@ -22,8 +23,8 @@ export const mainListItems = (
         </ListItemIcon>
         <ListItemText primary="Dashboard"  />
       </ListItem>
-    </NavLink>
-    <NavLink
+    </Link>
+    <Link
             to="/App/import"
             activeClassName="active"
             key="Import"
@@ -34,7 +35,7 @@ export const mainListItems = (
         </ListItemIcon>
         <ListItemText primary="Import" />
       </ListItem>
-    </NavLink>
+    </Link>
   </div>
 );
 

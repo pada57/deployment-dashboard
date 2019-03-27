@@ -32,6 +32,12 @@
   }
 } 
 */
+
+.App-link a {
+  color: #595757;
+  text-decoration: none
+}
+
 svg.red * {
   fill: #a52828;
 }
