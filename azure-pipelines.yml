@@ -19,8 +19,25 @@ steps:
     displayName: "Use Yarn 1.x"
 
   - task: geeklearningio.gl-vsts-tasks-yarn.yarn-task.Yarn@2
-    displayName:
-      "Yarn (install dependencies)"
+    displayName: "Yarn (install dependencies)"
+
+  - task: geeklearningio.gl-vsts-tasks-yarn.yarn-task.Yarn@2
+    displayName: "Yarn test"
+    inputs:
+      Arguments: test
+
+  - task: geeklearningio.gl-vsts-tasks-yarn.yarn-task.Yarn@2
+    displayName: "Yarn build"
+    inputs:
+      Arguments: build
+
+  - task: AzureWebApp@1
+    displayName: "Azure Web App Deploy: deployment-dashboard"
+    inputs:
+      azureSubscription: "Visual Studio Enterprise (d9b35105-6060-4622-a493-6efcfaedc3fa)"
+      appType: webAppLinux
+      appName: "deployment-dashboard"
+      package: "$(System.DefaultWorkingDirectory)/build/*.*"
       # - script: |
   #     npm install
   #     npm run build
