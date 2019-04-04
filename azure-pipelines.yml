@@ -15,11 +15,11 @@ steps:
       versionSpec: "11.x"
     displayName: "Install Node.js"
 
-  - task: YarnInstaller@1
+  - task: YarnInstaller@0
     displayName: "Yarn Install"
     inputs:
       checkLatest: true
-  # - script: |
+      # - script: |
   #     npm install
   #     npm run build
   #   displayName: "npm install and build"
