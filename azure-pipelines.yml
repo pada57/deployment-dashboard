@@ -24,7 +24,7 @@ steps:
   - task: geeklearningio.gl-vsts-tasks-yarn.yarn-task.Yarn@2
     displayName: "Yarn test (all)"
     inputs:
-      Arguments: test a
+      Arguments: test --no-watch
 
   - task: geeklearningio.gl-vsts-tasks-yarn.yarn-task.Yarn@2
     displayName: "Yarn build"
