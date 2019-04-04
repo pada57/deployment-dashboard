@@ -22,9 +22,9 @@ steps:
     displayName: "Yarn (install dependencies)"
 
   - task: geeklearningio.gl-vsts-tasks-yarn.yarn-task.Yarn@2
-    displayName: "Yarn test"
+    displayName: "Yarn test (all)"
     inputs:
-      Arguments: test
+      Arguments: test a
 
   - task: geeklearningio.gl-vsts-tasks-yarn.yarn-task.Yarn@2
     displayName: "Yarn build"
